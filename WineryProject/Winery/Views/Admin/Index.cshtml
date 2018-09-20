@@ -1,0 +1,119 @@
+﻿@model Winery.Models.WineViewModel
+
+
+@{
+                /**/
+
+                ViewBag.Title = "Админ";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header id="main-header" class="py-2 bg-info text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1><i class="fa fa-gear mr-5"></i>DASHBOARD</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="row py-5">
+    <div class="col-3">
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-info my-3" onclick="getAllWines()">Wine </button>
+            <button type="button" class="btn btn-info my-3" onclick="getAllTypes()">Types of Wine</button>
+            <button type="button" class="btn btn-info my-3" onclick="getAllSubTypes()">Subtypes of wine</button>
+            <a href="@Url.Action("Index","Admin")" class="btn btn-info my-3">Main dashboard</a>
+        </div>
+    </div>
+    <div class="col-9">
+        @*BOXES*@
+        <div class="container" id="boxes">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center bg-primary text-white mb-3">
+                        <div class="card-body">
+                            <h3>WINE</h3>
+                            <h1 class="display-4">
+                                <i class="fa fa-pencil"></i>
+                            </h1>
+                            <a href="@Url.Action("Index","AdminWine")" class="btn btn-outline-light btn-lg">MENAGE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center bg-success text-white mb-3">
+                        <div class="card-body">
+                            <h3>ORDERS</h3>
+                            <h1 class="display-4">
+                                <i class="fa fa-folder-open-o"></i>
+                            </h1>
+                            <a href="#" class="btn btn-outline-light btn-lg">MENAGE</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center bg-warning text-white mb-3">
+                        <div class="card-body">
+                            <h3>USERS</h3>
+                            <h1 class="display-4">
+                                <i class="fa fa-heart"></i>
+                            </h1>
+                            <a href="#" class="btn btn-outline-light btn-lg">MENAGE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="list"></div>
+
+
+    </div>
+</div>
+
+<script>
+     function getAllTypes() {
+        $.ajax({
+            url: '@Url.Action("GetAllTypes", "Admin")',
+            type: "GET",
+
+            success: function (response) {
+                $("#boxes").hide();
+                $("#list").html(response);
+            }
+        });
+    }
+
+     function getAllSubTypes() {
+        $.ajax({
+            url: '@Url.Action("GetAllSubTypes", "Admin")',
+            type: "GET",
+
+            success: function (response) {
+                $("#boxes").hide();
+                $("#list").html(response);
+            }
+        });
+    }
+
+
+    function getAllWines() {
+        $.ajax({
+            url: '@Url.Action("ListAllWines", "Admin")',
+            type: "GET",
+
+            success: function (response) {
+                $("#boxes").hide();
+                $("#list").html(response);
+            }
+        });
+    }
+
+
+   
+</script>
+
+
+
+
+

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Winery.Models.WineViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+          Type of wine
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BottleSizeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vintage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Types)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BottleSizeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubTypes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vintage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
